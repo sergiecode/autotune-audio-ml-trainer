@@ -579,10 +579,6 @@ python scripts/train_pitch_model.py --batch_size 8 --accumulate_grad_batches 4
 - **YouTube**: Video tutorials and demonstrations
 - **Documentation**: Detailed API reference
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - **CREPE**: Deep learning pitch detection
