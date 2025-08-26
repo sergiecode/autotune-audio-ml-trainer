@@ -1,0 +1,12 @@
+# Place raw audio files here
+# 
+# Supported formats:
+# - WAV (recommended)
+# - FLAC
+# - MP3
+# - M4A
+#
+# For best results:
+# - Sample rate: 44.1kHz or 48kHz
+# - Bit depth: 16-bit or 24-bit
+# - Duration: 30 seconds to 5 minutes per file
