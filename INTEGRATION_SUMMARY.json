@@ -1,0 +1,47 @@
+{
+  "integration_test_date": "2025-08-26",
+  "projects": {
+    "autotune_ml_trainer": {
+      "status": "EXCELLENT",
+      "location": "C:\\Users\\SnS_D\\Desktop\\IA\\autotune-audio-ml-trainer",
+      "capabilities": [
+        "Neural network training",
+        "ONNX model export",
+        "Audio preprocessing",
+        "Pitch extraction"
+      ]
+    },
+    "autotune_real_time_tuner": {
+      "status": "EXCELLENT",
+      "location": "..\\autotune-real-time-audio-tuner",
+      "capabilities": [
+        "Real-time audio processing",
+        "Python bindings",
+        "C++ performance",
+        "Cross-platform support"
+      ]
+    }
+  },
+  "integration": {
+    "compatibility_score": 60.0,
+    "status": "NEEDS WORK - Issues to resolve",
+    "test_results": {
+      "structure": "EXCELLENT",
+      "export": "FAILED",
+      "performance": "EXCELLENT",
+      "integration": "FAILED"
+    }
+  },
+  "recommendations": [
+    "Check project dependencies",
+    "Verify file structure",
+    "Review integration test failures",
+    "Fix performance issues"
+  ],
+  "next_steps": [
+    "Build C++ engine with ONNX Runtime support",
+    "Deploy trained models to C++ project",
+    "Test with real audio input",
+    "Optimize for production deployment"
+  ]
+}
