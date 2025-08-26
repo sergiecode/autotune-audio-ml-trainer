@@ -107,8 +107,14 @@ class PitchCorrectionNet(nn.Module):
         audio_normalized = self.input_norm(audio_buffer.unsqueeze(1)).squeeze(1)
         
         # Process audio with convolution
-        audio_conv = self.input_conv(audio_normalized.unsqueeze(1)).squeeze(1)
-        audio_features = F.adaptive_avg_pool1d(audio_conv.unsqueeze(1), self.input_size).squeeze(1)
+        audio_conv = self.input_conv(audio_normalized.unsqueeze(1))  # [batch, 64, seq_len]
+        audio_conv = audio_conv.mean(dim=1)  # Average across channels [batch, seq_len]
+        
+        # Resize to input_size if needed
+        if audio_conv.size(1) != self.input_size:
+            audio_features = F.adaptive_avg_pool1d(audio_conv.unsqueeze(1), self.input_size).squeeze(1)
+        else:
+            audio_features = audio_conv
         
         # Normalize target pitch (log scale)
         target_pitch_norm = torch.log(target_pitch + 1e-8) / 10.0  # Rough normalization
@@ -132,8 +138,8 @@ class PitchCorrectionNet(nn.Module):
         corrected_audio = (1 - residual_weight) * audio_buffer + residual_weight * pitch_correction
         
         # Apply correction strength
-        final_audio = (1 - correction_strength.unsqueeze(-1)) * audio_buffer + \
-                     correction_strength.unsqueeze(-1) * corrected_audio
+        final_audio = (1 - correction_strength) * audio_buffer + \
+                     correction_strength * corrected_audio
         
         return final_audio, confidence
         
